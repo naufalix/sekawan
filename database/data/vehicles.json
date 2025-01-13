@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Bus Damri",
+    "type": "people",
+    "license_plate": "N 1234 AB",
+    "is_owned": true,
+    "fuel_consumption": 4.5,
+    "last_service": "2024-12-15",
+    "next_service": "2025-06-15"
+  },
+  {
+    "id": 2,
+    "name": "Truk CPO",
+    "type": "goods",
+    "license_plate": "B 5678 CD",
+    "is_owned": false,
+    "fuel_consumption": 3.2,
+    "last_service": "2024-11-20",
+    "next_service": "2025-05-20"
+  },
+  {
+    "id": 3,
+    "name": "Mobil Pickup",
+    "type": "goods",
+    "license_plate": "L 9101 EF",
+    "is_owned": true,
+    "fuel_consumption": 6.8,
+    "last_service": "2024-10-05",
+    "next_service": "2025-04-05"
+  },
+  {
+    "id": 4,
+    "name": "Helikopter",
+    "type": "people",
+    "license_plate": "D 2345 GH",
+    "is_owned": false,
+    "fuel_consumption": 8.0,
+    "last_service": "2024-09-15",
+    "next_service": "2025-03-15"
+  },
+  {
+    "id": 5,
+    "name": "Truk Pasir (F 6789 IJ)",
+    "type": "goods",
+    "license_plate": "F 6789 IJ",
+    "is_owned": true,
+    "fuel_consumption": 5.5,
+    "last_service": "2024-08-10",
+    "next_service": "2025-02-10"
+  },
+  {
+    "id": 6,
+    "name": "Truk Pasir (F 6790 KL)",
+    "type": "goods",
+    "license_plate": "F 6789 IJ",
+    "is_owned": true,
+    "fuel_consumption": 5.5,
+    "last_service": "2024-08-10",
+    "next_service": "2025-02-10"
+  },
+  {
+    "id": 7,
+    "name": "Tank",
+    "type": "people",
+    "license_plate": "X 5 MIL",
+    "is_owned": true,
+    "fuel_consumption": 4.0,
+    "last_service": "2024-08-10",
+    "next_service": "2025-04-17"
+  },
+  {
+    "id": 8,
+    "name": "Kapal Laut Budiono Siregar",
+    "type": "people",
+    "license_plate": "X 99 AL",
+    "is_owned": false,
+    "fuel_consumption": 8.0,
+    "last_service": "2024-08-10",
+    "next_service": "2025-04-17"
+  }
+]
