@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ApiFormatter;
-use App\Models\City;
-use App\Models\Activity;
-use App\Models\Flood;
-use App\Models\FollowUp;
-use App\Models\Post;
+use App\Models\Approver;
+use App\Models\Driver;
+use App\Models\Office;
+use App\Models\Reservation;
+use App\Models\ReservationApproval;
+use App\Models\User;
+use App\Models\Vehicle;
+use App\Models\VehicleUsage;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,27 +18,28 @@ use Illuminate\Support\Facades\Auth;
 class APIController extends Controller
 {
   
-  public function city(City $city){  
-    return ApiFormatter::createApi(200,"Success",$city);
+  public function admin(User $admin){  
+    return ApiFormatter::createApi(200,"Success",$admin);
   }
-  public function activity(Activity $activity){  
-    return ApiFormatter::createApi(200,"Success",$activity);
+  public function approver(Approver $approver){  
+    return ApiFormatter::createApi(200,"Success",$approver);
   }
-  public function floods(){
-    $floods = Flood::with('cause')->get();
-    return ApiFormatter::createApi(200, "Success", $floods);
+  public function driver(Driver $driver){  
+    return ApiFormatter::createApi(200,"Success",$driver);
   }
-  public function flood($id){
-    $flood = Flood::whereId($id)->with('city')->first();  
-    return ApiFormatter::createApi(200,"Success",$flood);
-  }
-  // public function flood(Flood $flood){
-  //   return ApiFormatter::createApi(200,"Success",$flood);
-  // }
-  public function followUp(FollowUp $data){
+  public function reservation(Reservation $data){  
     return ApiFormatter::createApi(200,"Success",$data);
   }
-  public function post(Post $post){  
-    return ApiFormatter::createApi(200,"Success",$post);
+  public function reservation_approval(ReservationApproval $data){  
+    return ApiFormatter::createApi(200,"Success",$data);
+  }
+  public function office(Office $office){  
+    return ApiFormatter::createApi(200,"Success",$office);
+  }
+  public function vehicle(Vehicle $vehicle){  
+    return ApiFormatter::createApi(200,"Success",$vehicle);
+  }
+  public function vehicle_usage(VehicleUsage $data){  
+    return ApiFormatter::createApi(200,"Success",$data);
   }
 }

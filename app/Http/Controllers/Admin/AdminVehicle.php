@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class AdminVehicle extends Controller
             return back()->with($res['status'],$res['message']);
         }
         if($request->submit=="destroy"){
-            $res = $this->destroy($request);
+            $res = $this->softDelete($request);
             return back()->with($res['status'],$res['message']);
             // return back()->with("info","Fitur hapus sementara dinonaktifkan");
         }
@@ -42,8 +42,8 @@ class AdminVehicle extends Controller
             'name'=>'required',
             'type'=>'required',
             'license_plate'=>'required',
-            'is_owned'=>'required',
-            'fuel_consumtion'=>'required',
+            'is_owned'=>'required|boolean',
+            'fuel_consumption'=>'required',
             'image' => 'required|image|file|max:1024',
             'last_service'=>'required',
             'next_service'=>'required',
@@ -75,7 +75,7 @@ class AdminVehicle extends Controller
         $validatedData['image'] = time().".webp";
         $imageWebp->save('assets/img/vehicle/'.$validatedData['image']);
         
-        Activity::create($validatedData);
+        Vehicle::create($validatedData);
         return ['status'=>'success','message'=>'Kendaraan berhasil ditambahkan'];
 
     }
@@ -87,7 +87,7 @@ class AdminVehicle extends Controller
             'type'=>'required',
             'license_plate'=>'required',
             'is_owned'=>'required',
-            'fuel_consumtion'=>'required',
+            'fuel_consumption'=>'required',
             'image' => 'image|file|max:1024',
             'last_service'=>'required',
             'next_service'=>'required',
@@ -152,11 +152,11 @@ class AdminVehicle extends Controller
             'id' => 'required|numeric',
         ]);
 
-        $vehicle = Activity::find($request->id);
+        $vehicle = Vehicle::find($request->id);
 
         // Check if the data is found
         if (!$vehicle) {
-            return ['status' => 'error', 'message' => 'Kegiatan tidak ditemukan'];
+            return ['status' => 'error', 'message' => 'Kendaraan tidak ditemukan'];
         }
 
         $image_path = public_path().'/assets/img/vehicle/'.$vehicle->image;
@@ -166,8 +166,25 @@ class AdminVehicle extends Controller
             unlink($image_path); // Delete the image file
         }
 
-        Activity::destroy($request->id);
-        return ['status' => 'success', 'message' => 'Kegiatan berhasil dihapus'];
+        Vehicle::destroy($request->id);
+        return ['status' => 'success', 'message' => 'Kendaraan berhasil dihapus'];
+    }
+
+    public function softDelete(Request $request){
+        
+        $validatedData = $request->validate([
+            'id' => 'required|numeric',
+        ]);
+        
+        $vehicle = Vehicle::find($request->id);
+        
+        // Check if the data is found
+        if (!$vehicle) {
+            return ['status' => 'error', 'message' => 'Kendaraan tidak ditemukan'];
+        }
+        
+        $vehicle->delete();
+        return ['status' => 'success', 'message' => 'Kendaraan berhasil dihapus'];
     }
 
 }

@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('office_id');
+            $table->foreign('office_id')->references('id')->on('offices')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('license_number');
             $table->string('phone');
             $table->timestamps();
+            $table->string('deleted_at')->nullable();
         });
     }
 

@@ -1,7 +1,7 @@
 [
-  {"name": "Garry Kasparov",  "license_number": "010615440199", "phone":"085234456678"},
-  {"name": "Mikhail Botvinnik",  "license_number": "010122344566", "phone":"085900122344"},
-  {"name": "Vladimir Kramnik",  "license_number": "010788900122", "phone":"085566788990"},
-  {"name": "Lev Polugaevsky",  "license_number": "010344566788", "phone":"085122344566"},
-  {"name": "Efim Geller",  "license_number": "010900122344", "phone":"085899011233"}
+  {"office_id": 4, "name": "Garry Kasparov",  "license_number": "010615440199", "phone":"085234456678"},
+  {"office_id": 3, "name": "Mikhail Botvinnik",  "license_number": "010122344566", "phone":"085900122344"},
+  {"office_id": 6, "name": "Vladimir Kramnik",  "license_number": "010788900122", "phone":"085566788990"},
+  {"office_id": 5, "name": "Lev Polugaevsky",  "license_number": "010344566788", "phone":"085122344566"},
+  {"office_id": 7, "name": "Efim Geller",  "license_number": "010900122344", "phone":"085899011233"}
 ]

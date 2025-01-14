@@ -19,22 +19,27 @@
                   <h4 class="menu-content text-muted mb-0 fs-7 text-uppercase">Menu</h4>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dashboard">
+                  <a class="menu-link py-2" href="/admin">
                     <span class="menu-title menu-icon"><i class="fa fa-dashboard"></i> Dashboard</span>
                   </a>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dashboard/vehicle">
+                  <a class="menu-link py-2" href="/admin/office">
+                    <span class="menu-title menu-icon"><i class="bi bi-building-fill fs-3"></i> Kantor cabang</span>
+                  </a>
+                </div>
+                <div class="menu-item">
+                  <a class="menu-link py-2" href="/admin/vehicle">
                     <span class="menu-title menu-icon"><i class="mdi mdi-dump-truck fs-2"></i> Kendaraan</span>
                   </a>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dashboard/driver">
+                  <a class="menu-link py-2" href="/admin/driver">
                     <span class="menu-title menu-icon"><i class="mdi mdi-racing-helmet fs-2"></i> Driver</span>
                   </a>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dashboard/reservation">
+                  <a class="menu-link py-2" href="/admin/reservation">
                     <span class="menu-title menu-icon"><i class="mdi mdi-car-key fs-2"></i>Pemesanaan</span>
                   </a>
                 </div>

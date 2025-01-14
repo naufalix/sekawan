@@ -1,0 +1,10 @@
+[
+  {"id": 1, "name": "Kantor pusat", "address": "Jl. Thamrin No.1, Jakarta Pusat, DKI Jakarta"},
+  {"id": 2, "name": "Kantor cabang", "address": "Jl. Raya Darmo No.20, Surabaya, Jawa Timur"},
+  {"id": 3, "name": "Tambang 1", "address": "Jl. Raya Karanganyar, Kebumen, Jawa Tengah"},
+  {"id": 4, "name": "Tambang 2", "address": "Desa Ngoro, Mojokerto, Jawa Timur"},
+  {"id": 5, "name": "Tambang 3", "address": "Kawasan Ciwandan, Cilegon, Banten"},
+  {"id": 6, "name": "Tambang 4", "address": "Kecamatan Wonosari, Gunungkidul, Yogyakarta"},
+  {"id": 7, "name": "Tambang 5", "address": "Desa Tumpang, Malang, Jawa Timur"},
+  {"id": 8, "name": "Tambang 6", "address": "Kecamatan Kawalu, Tasikmalaya, Jawa Barat"}
+]

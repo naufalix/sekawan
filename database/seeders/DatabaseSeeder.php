@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Approver;
 use App\Models\Driver;
+use App\Models\Office;
 use App\Models\Vehicle;
 use App\Models\User;
 use File;
@@ -40,9 +41,19 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        $offices = json_decode(File::get("database/data/offices.json"));
+        foreach ($offices as $key => $value) {
+            Office::create([
+                "id" => $value->id,
+                "name" => $value->name,
+                "address" => $value->address,
+            ]);
+        }
+
         $drivers = json_decode(File::get("database/data/drivers.json"));
         foreach ($drivers as $key => $value) {
             Driver::create([
+                "office_id" => $value->office_id,
                 "name" => $value->name,
                 "license_number" => $value->license_number,
                 "phone" => $value->phone,
