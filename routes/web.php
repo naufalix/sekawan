@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminDriver;
 use App\Http\Controllers\Admin\AdminOffice;
 use App\Http\Controllers\Admin\AdminReservation;
 use App\Http\Controllers\Admin\AdminVehicle;
+use App\Http\Controllers\Approver\ApproverApproval;
 use App\Http\Controllers\Approver\ApproverHome;
 use Illuminate\Support\Facades\Route;
 
@@ -41,10 +42,10 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
 
 // APPROVER PAGE
 Route::group(['prefix'=> 'approver','middleware'=>['auth:approver']], function(){
-    Route::get('/', [ApproverDashboard::class, 'index']);
-    Route::get('/cashier', [ShopCashier::class, 'index']);
+    Route::get('/', [ApproverHome::class, 'index']);
+    Route::get('/approval', [ApproverApproval::class, 'index']);
     
-    Route::post('/cashier', [ShopCashier::class, 'postHandler']);
+    Route::post('/approval', [ApproverApproval::class, 'postHandler']);
 });
 
 // API
