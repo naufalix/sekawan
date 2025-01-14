@@ -6,6 +6,7 @@ use App\Models\Approver;
 use App\Models\Driver;
 use App\Models\Reservation;
 use App\Models\ReservationApproval;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -17,7 +18,9 @@ class AdminReservation extends Controller
             "title" => "Admin | Reservasi kendaraan",
             "approvers" => Approver::orderBy("name","ASC")->get(),
             "drivers" => Driver::orderBy("name","ASC")->get(),
-            "reservations" => Reservation::orderBy("id","DESC")->get(),
+            "reservations" => Reservation::with('reservation_approval.approver')->orderBy("id","DESC")->get(),
+            "approvals" => ReservationApproval::with('approver')->get(),
+            "vehicles" => Vehicle::orderBy("name","ASC")->get(),
         ]);
     }
 
@@ -49,13 +52,14 @@ class AdminReservation extends Controller
             'start_date'=>'required',
             'end_date'=>'required',
         ]);
+        $validatedData['status'] = 'pending';
         
         $reservation = Reservation::create($validatedData);
 
-        ReservationApproval::create(
-            [ "approver_id" => $request->approver_1, "reservation_id" => $reservation->id, "approval_level" => 1,"status" => "pending",],
-            [ "approver_id" => $request->approver_2, "reservation_id" => $reservation->id, "approval_level" => 2,"status" => "pending",]
-        );
+        ReservationApproval::insert([
+            ["approver_id" => $request->approver_1,"reservation_id" => $reservation->id,"approval_level" => 1,"status" => "pending","comment" => "",],
+            ["approver_id" => $request->approver_2,"reservation_id" => $reservation->id,"approval_level" => 2,"status" => "pending","comment" => "",]
+        ]);
 
         return ['status'=>'success','message'=>'Reservasi berhasil ditambahkan'];
     }

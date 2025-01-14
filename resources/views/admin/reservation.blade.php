@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
 <div class="card mb-2">
   <!--begin::Card Body-->
   <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
@@ -31,19 +30,50 @@
           <tbody>
             @foreach ($reservations as $r)
             @php
-              $updated = date_create($r->updated_at);
+              $sd = date_create($r->start_date);
+              $ed = date_create($r->end_date);
+              $approval1 = $r->reservation_approval->where('approval_level',1)->first();
+              $approval2 = $r->reservation_approval->where('approval_level',2)->first();
             @endphp
             <tr>
               <td class="">{{$loop->iteration}}</td>
               <td>{{ $r->purpose }}  </td>
-              <td>{{ $r->vehicle->name }}</td>
               <td>
-                <span class="badge badge-primary">{{ $r->license_number }}</span>
+                <p class="mb-0"><b>Driver : </b> {{ $r->driver->name }}</p>
+                <p class="mb-0"><b>Kendaraan : </b> {{ $r->vehicle->name }}</p>  
               </td>
               <td>
-                <span class="badge badge-success">{{ $r->phone }}</span>
+                <p class="mb-0"><b>Tanggal mulai : </b> {{date_format($sd,"d/m/Y")}}</p>
+                <p class="mb-0"><b>Tanggal selesai : </b> {{date_format($ed,"d/m/Y")}}</p>  
               </td>
-              <td>{{date_format($updated,"d F Y")}}</td>
+              <td>
+                <span class="badge 
+                    @if($r->status == 'pending') badge-warning 
+                    @elseif($r->status == 'approved') badge-success 
+                    @elseif($r->status == 'rejected') badge-danger 
+                    @else badge-primary 
+                    @endif">
+                    {{ ucfirst($r->status) }}
+                </span>
+              </td>
+              <td>
+                @if ($approval1)
+                  <span class="badge @if($approval1->status == 'pending') badge-warning 
+                    @elseif($approval1->status == 'approved') badge-success 
+                    @elseif($approval1->status == 'rejected') badge-danger 
+                    @else badge-primary 
+                    @endif">{{ucfirst($approval1->approver->name)}}</span>
+                @endif
+              </td>
+              <td>
+                @if ($approval2)
+                  <span class="badge @if($approval2->status == 'pending') badge-warning 
+                    @elseif($approval2->status == 'approved') badge-success 
+                    @elseif($approval2->status == 'rejected') badge-danger 
+                    @else badge-primary 
+                    @endif">{{ucfirst($approval2->approver->name)}}</span>
+                @endif
+              </td>
               <td>
                 <a href="#" class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit" onclick="edit({{ $r->id }})"><i class="bi bi-pencil-fill"></i></a>
                 <a href="#" class="btn btn-icon btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapus" onclick="hapus({{ $r->id }})"><i class="fa fa-times"></i></a>
@@ -74,26 +104,53 @@
         @csrf
         <div class="modal-body">
           <div class="row g-9">
-            <div class="col-12 col-md-6">
+            <div class="col-12">
               <label class="required fw-bold mb-2">Keperluan reservasi</label>
               <input type="text" class="form-control" name="purpose" required>
             </div>
             <div class="col-12 col-md-6">
-              <label class="required fw-bold mb-2">Nomor telepon</label>
-              <input type="text" class="form-control" name="phone" required>
-            </div>
-            <div class="col-12 col-md-6">
-              <label class="required fw-bold mb-2">Kantor cabang</label>
-              <select class="form-control" name="office_id" required>
-                <option value="" disabled selected>- Pilih tipe -</option>
-                {{-- @foreach ($offices as $o)
-                  <option value="{{$o->id}}">{{$o->name}}</option>
-                @endforeach --}}
+              <label class="required fw-bold mb-2">Driver</label>
+              <select class="form-control" name="driver_id" required>
+                <option value="" disabled selected>- Pilih driver -</option>
+                @foreach ($drivers as $d)
+                  <option value="{{$d->id}}">{{$d->name}}</option>
+                @endforeach
               </select>
             </div>
             <div class="col-12 col-md-6">
-              <label class="required fw-bold mb-2">Nomor SIM</label>
-              <input type="text" class="form-control" name="license_number" required>
+              <label class="required fw-bold mb-2">Kendaraan</label>
+              <select class="form-control" name="vehicle_id" required>
+                <option value="" disabled selected>- Pilih kendaraan -</option>
+                @foreach ($vehicles as $v)
+                  <option value="{{$v->id}}">{{$v->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="required fw-bold mb-2">Tanggal mulai</label>
+              <input type="date" class="form-control" name="start_date" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="required fw-bold mb-2">Tanggal selesai</label>
+              <input type="date" class="form-control" name="end_date" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="required fw-bold mb-2">Approver level 1</label>
+              <select class="form-control" name="approver_1" required>
+                <option value="" disabled selected>- Pilih approver 1 -</option>
+                @foreach ($approvers as $a)
+                  <option value="{{$a->id}}">{{$a->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="required fw-bold mb-2">Approver level 2</label>
+              <select class="form-control" name="approver_2" required>
+                <option value="" disabled selected>- Pilih approver 2 -</option>
+                @foreach ($approvers as $a)
+                  <option value="{{$a->id}}">{{$a->name}}</option>
+                @endforeach
+              </select>
             </div>
           </div>
         </div>
