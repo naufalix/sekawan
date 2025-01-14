@@ -25,7 +25,7 @@
                 </div>
                 <div class="menu-item">
                   <a class="menu-link py-2" href="/approver/approval">
-                    <span class="menu-title menu-icon"><i class="bi bi-building-fill fs-3"></i> Persetujuan</span>
+                    <span class="menu-title menu-icon"><i class="mdi mdi-check-circle fs-3"></i> Persetujuan</span>
                   </a>
                 </div>
 

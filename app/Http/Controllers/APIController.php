@@ -30,8 +30,8 @@ class APIController extends Controller
   public function reservation(Reservation $reservation){  
     return ApiFormatter::createApi(200,"Success",$reservation);
   }
-  public function reservation_approval(ReservationApproval $data){  
-    return ApiFormatter::createApi(200,"Success",$data);
+  public function reservation_approval(ReservationApproval $reservation_approval){  
+    return ApiFormatter::createApi(200,"Success",$reservation_approval);
   }
   public function office(Office $office){  
     return ApiFormatter::createApi(200,"Success",$office);
