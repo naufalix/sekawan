@@ -53,4 +53,5 @@ Route::get('/api/admin/{admin:id}', [APIController::class, 'admin']);
 Route::get('/api/approver/{approver:id}', [APIController::class, 'approver']);
 Route::get('/api/driver/{driver:id}', [APIController::class, 'driver']);
 Route::get('/api/office/{office:id}', [APIController::class, 'office']);
+Route::get('/api/reservation/{reservation:id}', [APIController::class, 'reservation']);
 Route::get('/api/vehicle/{vehicle:id}', [APIController::class, 'vehicle']);

@@ -27,8 +27,8 @@ class APIController extends Controller
   public function driver(Driver $driver){  
     return ApiFormatter::createApi(200,"Success",$driver);
   }
-  public function reservation(Reservation $data){  
-    return ApiFormatter::createApi(200,"Success",$data);
+  public function reservation(Reservation $reservation){  
+    return ApiFormatter::createApi(200,"Success",$reservation);
   }
   public function reservation_approval(ReservationApproval $data){  
     return ApiFormatter::createApi(200,"Success",$data);
