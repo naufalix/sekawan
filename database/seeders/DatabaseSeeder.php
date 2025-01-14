@@ -27,10 +27,11 @@ class DatabaseSeeder extends Seeder
             "phone" => "085234006051"
         ]);
 
-        Approver::create(
-            ["name" => "Approver 1", "email" => "approver1@naufal.dev", "password" => bcrypt('approver1'), "phone" => "085234006051"],
-            ["name" => "Approver 2", "email" => "approver2@naufal.dev", "password" => bcrypt('approver2'), "phone" => "085234006051"],
-        );
+        Approver::insert([
+            ["name" => "Approver 1","email" => "approver1@naufal.dev","password" => bcrypt('approver1'),"phone" => "085234006051",],
+            ["name" => "Approver 2","email" => "approver2@naufal.dev","password" => bcrypt('approver2'),"phone" => "085234006051",]
+        ]);
+        
         $approvers = json_decode(File::get("database/data/approvers.json"));
         foreach ($approvers as $key => $value) {
             Approver::create([

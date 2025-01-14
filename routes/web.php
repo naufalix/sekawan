@@ -39,8 +39,8 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
     Route::post('/vehicle', [AdminVehicle::class, 'postHandler']);
 });
 
-// OWNERS PAGE
-Route::group(['prefix'=> 'approver','middleware'=>['auth:approver  ']], function(){
+// APPROVER PAGE
+Route::group(['prefix'=> 'approver','middleware'=>['auth:approver']], function(){
     Route::get('/', [ApproverDashboard::class, 'index']);
     Route::get('/cashier', [ShopCashier::class, 'index']);
     
