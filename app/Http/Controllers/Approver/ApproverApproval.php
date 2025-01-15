@@ -33,14 +33,35 @@ class ApproverApproval extends Controller
         ]);
         
         $approval = ReservationApproval::find($request->id);
-
+        
         //Check if the data is found
         if(!$approval){
             return ['status'=>'error','message'=>'Data tidak ditemukan'];
         }
-        
+
         // Update data
-        $approval->update($validatedData);    
+        $approval->update($validatedData); 
+        
+        // Update reservation status
+        $reservation = Reservation::find($approval->reservation_id);
+
+        $approval1 = $reservation->reservation_approval->where('approval_level',1)->first();
+        $approval2 = $reservation->reservation_approval->where('approval_level',2)->first();
+        
+        if($approval1->status=='rejected'||$approval2->status=='rejected'){
+            $reservation->status='rejected';
+            $reservation->save(); 
+        }
+        else if($approval1->status=='approved' && $approval2->status=='approved'){
+            $reservation->status='approved';
+            $reservation->save(); 
+        }
+        else{
+            $reservation->status='pending';
+            $reservation->save();
+        }
+        
+        
         return ['status'=>'success','message'=>'Data berhasil diedit'];
         
     }
