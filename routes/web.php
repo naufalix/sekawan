@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminDriver;
 use App\Http\Controllers\Admin\AdminOffice;
 use App\Http\Controllers\Admin\AdminReservation;
 use App\Http\Controllers\Admin\AdminVehicle;
+use App\Http\Controllers\Admin\AdminVehicleUsage;
 use App\Http\Controllers\Approver\ApproverApproval;
 use App\Http\Controllers\Approver\ApproverHome;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
     Route::get('/office', [AdminOffice::class, 'index']);
     Route::get('/reservation', [AdminReservation::class, 'index']);
     Route::get('/vehicle', [AdminVehicle::class, 'index']);
+    Route::get('/vehicle-usage', [AdminVehicleUsage::class, 'index']);
     
     Route::post('/admin', [AdminAdmin::class, 'postHandler']);
     Route::post('/approver', [AdminApprover::class, 'postHandler']);
@@ -38,6 +40,7 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
     Route::post('/office', [AdminOffice::class, 'postHandler']);
     Route::post('/reservation', [AdminReservation::class, 'postHandler']);
     Route::post('/vehicle', [AdminVehicle::class, 'postHandler']);
+    Route::post('/vehicle-usage', [AdminVehicleUsage::class, 'postHandler']);
 });
 
 // APPROVER PAGE
@@ -57,3 +60,4 @@ Route::get('/api/office/{office:id}', [APIController::class, 'office']);
 Route::get('/api/reservation/{reservation:id}', [APIController::class, 'reservation']);
 Route::get('/api/reservation_approval/{reservation_approval:id}', [APIController::class, 'reservation_approval']);
 Route::get('/api/vehicle/{vehicle:id}', [APIController::class, 'vehicle']);
+Route::get('/api/vehicle_usage/{vehicle_usage:id}', [APIController::class, 'vehicle_usage']);

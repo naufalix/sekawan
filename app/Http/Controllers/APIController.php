@@ -39,7 +39,7 @@ class APIController extends Controller
   public function vehicle(Vehicle $vehicle){  
     return ApiFormatter::createApi(200,"Success",$vehicle);
   }
-  public function vehicle_usage(VehicleUsage $data){  
-    return ApiFormatter::createApi(200,"Success",$data);
+  public function vehicle_usage(VehicleUsage $vehicle_usage){  
+    return ApiFormatter::createApi(200,"Success",$vehicle_usage);
   }
 }

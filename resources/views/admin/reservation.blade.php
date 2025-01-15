@@ -18,12 +18,11 @@
           <thead>
             <tr class="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
               <th class="width: 30px">No</th>
-              <th>Keperluan reservasi</th>
-              <th style="min-width: 120px">Kendaraan/Driver</th>
-              <th style="min-width: 150px">Tanggal</th>
-              <th style="min-width: 120px">Status</th>
-              <th style="min-width: 120px">Approver 1</th>
-              <th style="min-width: 120px">Approver 2</th>
+              <th style="min-width: 200px">Keperluan reservasi</th>
+              <th style="min-width: 200px">Driver/Kendaraan</th>
+              <th style="min-width: 200px">Tanggal</th>
+              <th style="min-width: 100px">Status</th>
+              <th style="min-width: 200px">Approver</th>
               <th style="min-width: 90px">Action</th>
             </tr>
           </thead>
@@ -58,20 +57,22 @@
               </td>
               <td>
                 @if ($approval1)
-                  <span class="badge @if($approval1->status == 'pending') badge-warning 
-                    @elseif($approval1->status == 'approved') badge-success 
-                    @elseif($approval1->status == 'rejected') badge-danger 
-                    @else badge-primary 
-                    @endif">{{ucfirst($approval1->approver->name)}}</span>
+                  <p class=""><b>{{$approval1->approver->name}} : </b> 
+                    <span class="badge @if($approval1->status == 'pending') badge-warning 
+                      @elseif($approval1->status == 'approved') badge-success 
+                      @elseif($approval1->status == 'rejected') badge-danger 
+                      @else badge-primary 
+                      @endif">{{ucfirst($approval1->status)}}</span>
+                  </p>
                 @endif
-              </td>
-              <td>
                 @if ($approval2)
-                  <span class="badge @if($approval2->status == 'pending') badge-warning 
-                    @elseif($approval2->status == 'approved') badge-success 
-                    @elseif($approval2->status == 'rejected') badge-danger 
-                    @else badge-primary 
-                    @endif">{{ucfirst($approval2->approver->name)}}</span>
+                  <p class="mb-0"><b>{{$approval2->approver->name}} : </b> 
+                    <span class="badge @if($approval2->status == 'pending') badge-warning 
+                      @elseif($approval2->status == 'approved') badge-success 
+                      @elseif($approval2->status == 'rejected') badge-danger 
+                      @else badge-primary 
+                      @endif">{{ucfirst($approval2->status)}}</span>
+                  </p>
                 @endif
               </td>
               <td>
