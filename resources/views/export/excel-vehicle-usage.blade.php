@@ -7,11 +7,16 @@
     <!--begin::Section-->
     <div>
       <!--begin::Heading-->
-      <div class="col-12 d-flex">
-        <h1 class="me-auto anchor fw-bolder mb-5" id="striped-rounded-bordered">Export data reservasi kendaraan</h1>
-        <button class="btn btn-primary me-3" onClick="dataexport('csv')" style="zoom:75%; height: fit-content">CSV</button>
-        <button class="btn btn-danger me-3" onClick="dataexport('pdf')" style="zoom:75%; height: fit-content">PDF</button>
-        <button class="btn btn-success me-3" onClick="dataexport('excel')" style="zoom:75%; height: fit-content">Export</button>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h1 class="anchor fw-bolder mb-5" id="striped-rounded-bordered">Export data riwayat pemakaian kendaraan</h1>
+        </div>
+        <div class="col-12 col-md-6 text-end">
+          <button class="btn btn-dark me-3" onClick="dataexport('copy')" style="zoom:75%; height: fit-content">Copy</button>
+          <button class="btn btn-primary me-3" onClick="dataexport('csv')" style="zoom:75%; height: fit-content">CSV</button>
+          <button class="btn btn-danger me-3" onClick="dataexport('pdf')" style="zoom:75%; height: fit-content">PDF</button>
+          <button class="btn btn-success me-3" onClick="dataexport('excel')" style="zoom:75%; height: fit-content">Export</button>
+        </div>
       </div>
       <!--end::Heading-->
       <!--begin::Block-->
