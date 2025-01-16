@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\APIController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\AdminHome;
 use App\Http\Controllers\Admin\AdminAdmin;
@@ -29,6 +30,7 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
     Route::get('/admin', [AdminAdmin::class, 'index']);
     Route::get('/approver', [AdminApprover::class, 'index']);
     Route::get('/driver', [AdminDriver::class, 'index']);
+    Route::get('/excel/{id}', [ExportController::class, 'excel']);
     Route::get('/office', [AdminOffice::class, 'index']);
     Route::get('/reservation', [AdminReservation::class, 'index']);
     Route::get('/vehicle', [AdminVehicle::class, 'index']);

@@ -8,8 +8,11 @@
     <div>
       <!--begin::Heading-->
       <div class="col-12 d-flex">
-        <h1 class="anchor fw-bolder mb-5" id="striped-rounded-bordered">Data reservasi kendaraan</h1>
-        <button class="ms-auto btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+        <h1 class="me-auto anchor fw-bolder mb-5" id="striped-rounded-bordered">Data reservasi kendaraan</h1>
+        <a class="btn btn-primary btn-sekawan me-3" href="/admin/excel/reservation" target="_blank" style="zoom:75%; height: fit-content">
+          <i class="mdi mdi-download fs-2"></i>Export
+        </a>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah" style="zoom:75%; height: fit-content">Tambah</button>
       </div>
       <!--end::Heading-->
       <!--begin::Block-->
