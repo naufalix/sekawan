@@ -41,6 +41,7 @@
     <style type="text/css">
         .of-cover {object-fit: cover;}
         .btn-sm {font-size: 6px !important; border-radius: 5px !important;}
+        .dt-buttons{display: none}
         html{scroll-behavior:smooth}
         .container {max-width: inherit}
         /* .markdown:first-child {margin-top: 0px !important;} */

@@ -16,6 +16,14 @@
     <script src="/assets/js/custom/documentation/documentation.js"></script>
     <script src="/assets/js/custom/documentation/search.js"></script>
     <script src="/assets/js/custom/authentication/sign-in/general.js"></script>
+		<script src="/assets/js/custom/dataexport.js?v=1"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
     <!--end::Page Custom Javascript-->
     <script>
       $(document).ready(function () {
@@ -27,54 +35,12 @@
               "previous": "<",
               "next": ">"
             }
-          }
+          },
+					"dom": 'Bfrtip',
+					"buttons": [
+						'copy', 'csv', 'excel', 'pdf', 'print'
+					]
         });
       });
     </script>
     <!--end::Javascript-->
-
-
-    <script>
-      success: function (response) {
-				if (response.success) {
-					Swal.fire({
-						// position: 'top-end',
-						icon: response.message.icon,
-						title: response.message.title,
-						text: response.message.text,
-						showConfirmButton: true,
-					}).then((response.message) => {
-						/* Read more about isConfirmed, isDenied below */
-						alert(response);
-						// window.location.href = "dashboard";
-					});
-				} else {
-					$("#progress-bar").width("0px");
-					$("#loader-icon").html(
-						'<p style="color:#EA4335;">Terdapat inputan yang tidak sesuai, mohon cek ulang.</p>'
-					);
-					if (response.message.alert_type == "swal") {
-						Swal.fire({
-							// position: 'top-end',
-							icon: "error",
-							text: response.message.message,
-							showConfirmButton: true,
-						});
-					} else if (response.message.alert_type == "classic") {
-						var message = response.message;
-						$("#judulErr").text(message.title_error);
-						$("#descErr").text(message.desc_error);
-						$("#copyErr").text(message.paket_harga_error);
-						$("#kertasErr").text(message.kertas_error);
-						$("#berkasErr").text(message.berkas_error);
-						$("#is_coverErr").text(message.is_cover_error);
-						$("#is_kdtErr").text(message.is_kdt_error);
-						$("#pembacaErr").text(message.pembaca_error);
-						$("#catatCoverErr").text(message.catat_cover_error);
-						$("#uploadCoverErr").text(message.upload_cover_error);
-						$("#alamatErr").text(message.alamat_error);
-						$("#typeErr").text(message.jk_error);
-					}
-				}
-			},
-    </script>
